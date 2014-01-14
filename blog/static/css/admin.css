@@ -83,5 +83,5 @@ a.admin-action {
 }
 
 img.image-inherit {
-    width: 100%;
+    max-width: 100%;
 }

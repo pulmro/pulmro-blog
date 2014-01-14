@@ -7,4 +7,4 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'blog/uploads/')
 
 CSRF_ENABLED = True
-SECRET_KEY = 'your-secret-key'
+SECRET_KEY = 'ap667cmo2u349didg8723'
