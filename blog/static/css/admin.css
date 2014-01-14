@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Genericons';
+    src: url('../font/genericons-regular-webfont.eot');
+    src: url('../font/genericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/genericons-regular-webfont.woff') format('woff'),
+         url('../font/genericons-regular-webfont.ttf') format('truetype'),
+         url('../font/genericons-regular-webfont.svg#genericonsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.form-signin {
+    margin: 0 auto;
+    max-width: 330px;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.admin-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.comment-content {
+    display: none;
+}
+
+.genericon:before {
+    -webkit-font-smoothing: antialiased;
+	font-family: 'Genericons';
+}
+
+.genericon-user:before {
+    content: '\f304';
+	display: inline-block;
+	vertical-align: top;
+}
+
+.genericon-close:before {
+    content: '\f405';
+}
+
+a.admin-action {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.admin-overflow-hidden {
+    overflow: hidden;
+}
+
+.input-title {
+    border: none;
+    padding: 5px;
+    font-size: 28px;
+    height: 48px;
+}
+
+
+.flask-pagedown-input {
+    height: 900px;
+    border: none;
+    padding: 10px;
+    font-family: monospace;
+}
+
+.flask-pagedown-preview {
+    height: 920px;
+    overflow-y: scroll;
+    padding: 10px;
+    background: rgb(248,248,248);
+}
+
+.image-preview img {
+    height: 300px;
+}
+
+img.image-inherit {
+    width: 100%;
+}

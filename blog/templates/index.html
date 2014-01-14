@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="content">
+    {% for article in recent_articles %}
+    <article class="post">
+        <div class="post-header"><p class="post-date">{{article.created_at.strftime('%d %m %Y')}}</p></div>
+        <div class="post-thumbnail"><img src='{{article.get_thumbnail_url()}}' alt='{{article.title}}' /></div>
+        <div class="post-content">
+            <div class="post-title">{{article.title}}</div>
+            <div class="post-description">{{article.description}}</div>
+        </div>
+        <div class="post-actions">
+            <ul><li><a href="#"><img src="../static/images/share.png"><p>Share</p></a></li>
+            <li><a href="article/{{article.id}}"><img src="../static/images/go-next.png"><p>Read more</p></a></li></ul>
+        </div>
+
+    </article>
+    {% endfor %}
+    <div class="content-footer"><a href="#">More posts &#187</a></div>
+</div>
+{% endblock %}

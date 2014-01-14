@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="content">
+    <article class="post-single">
+        <div class="post-thumbnail"><img src="{{article.get_thumbnail_url()}}" alt="{{article.title}}" /></div>
+            <p class="post-date">{{article.created_at.strftime('%d %m %Y')}}</p>
+            <div class="post-title">{{article.title}}
+                    {% if g.user.is_authenticated() and g.user.is_admin() %}<small><code><a href="/edit_article/{{article.id}}">edit article</a></code></small>{% endif %}
+            </div>
+            <div class="post-content">
+            <div class="post-body">{{article.body_html}}</div>
+        </div>
+    </article>
+    <div class="content-footer"><a href="{{link_previous.url}}">{% if link_previous.title %} {{link_previous.title}} {% else %} Back to blog {% endif %} -></a></div>
+    <div id="comments">
+        <h3 id="comments-title">Commenti su <em>{{article.title}}</em></h3>
+        <ol class="comment-list">
+            {% for comment in comments recursive %}
+             <li class="comment-thread">
+                 <div class="comment-container" >
+                    <div class="comment-author">{{comment.author.nickname}}</div>
+                    <div class="comment-meta">{{comment.date.strftime('%d %m %Y alle %H:%M')}}</div>
+                    <div class="comment-body"><p>{{comment.content}}</p></div>
+                    <div class="comment-reply"><a class="comment-reply-click comment_id-{{comment.id}}">Reply</a></div>
+                 </div>
+                 {% if comment.children %}
+                  <ul class="comment-children">{{loop(comment.children)}}</ul>
+                 {% endif %}
+            {% endfor %}
+        </ol>
+        <div class="comment-reply"><a class="comment-reply-click comment_id-0">Reply to the article</a></div>
+        <div id="respond">
+        <h3 id="reply-title">Leave a reply</h3>
+        <form id="commentform" method="post" action="/comment-post">
+            {{ form.csrf_token }}
+            {% for error in form.errors.csrf_token %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+            <div id="comment-form-textarea">{{form.body(placeholder="Write here your comment")}}</div>
+            {% for error in form.errors.body %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+            <div id="comment-form-identity">
+                <div id="comment-form-identity-head">
+                    <p>Insert your data here or access with the following services</p>
+                    <div id="comment-form-identity-services">
+                    <ul><li><a class="login-twitter" href="#"></a></li><li><a class="login-facebook" href="#"></a></li></ul></div>
+                </div>
+                <div id="comment-form-guest">
+                    <div class="comment-form-field comment-form-email">
+                        <span class="nopublish">The address will not be published</span>
+                        <div class="comment-form-input">{{form.email(type="email")}}</div>
+                        <label for="email">Email</label>
+                    </div>
+                    {% for error in form.errors.email %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}
+                    <div class="comment-form-field comment-form-author">
+                        <div class="comment-form-input">{{form.author}}</div>
+                        <label for="author">Name</label>
+                    </div>
+                    {% for error in form.errors.author %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}
+                </div>
+                </div>
+                <p class="comment-submit">
+                    {{form.comment_post_id(value=article.id)}}
+                    {% for error in form.errors.comment_post_id %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}
+                    {{form.comment_parent_id}}
+                    {% for error in form.errors.comment_parent_id %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}
+                    <input id="comment-submit" type="submit" value="Send comment" name="submit"/>
+                </p>
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base_admin.html" %}
+{% set active_page = "admin" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+        <div class="container">
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+        <h2>Admin Page</h2>
+        <p>This page provides you an overview of latest articles and comments added.</p>
+        <p>From here you can manage users signed to the blog too.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-4">
+                <h2>Articles</h2>
+                <p>Most recent articles</p>
+                <ul class="admin-list">
+                    {% for article in recent_articles %}
+                    <li class="row">
+                        <div class="col-xs-8">{{article.title}}</div>
+                        <div class="col-xs-4"><a href="/edit_article/{{article.id}}">edit &raquo;</a></div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <p><a class="btn btn-default" href='#'>View Articles &raquo;</a></p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4">
+                <h2 class="genericon genericon-user">Users</h2>
+                <p>Users signed to your blog</p>
+                <ul class="admin-list">
+                    {% for user in recent_users %}
+                    <li class="row">
+                        <div class="col-xs-8">{{user.nickname}}</div>
+                        <div class="col-xs-4"><a href="/edit_user/{{user.id}}">edit &raquo;</a></div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <p><a class="btn btn-default" href='#'>View Users &raquo;</a></p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <h2>Comments</h2>
+                <p>Most recent comments</p>
+                <ul class="admin-list">
+                    {% for comment in recent_comments %}
+                    <li class="row">
+                        <div class="col-xs-4">{{comment.author.nickname}}</div>
+                        <div class="col-xs-4 admin-overflow-hidden">{{comment.content|truncate(25, True)}}</div>
+                        <div class="col-xs-2">N_A</div>
+                        <div class="col-xs-2"><a href="/edit_comment/{{comment.id}}">edit &raquo;</a></div>
+                        <div class="col-xs-12 comment-content">{{comment.content}}</div>
+                    </li>
+
+                    {% endfor %}
+                </ul>
+                <p><a class="btn btn-default" href='#'>View Comments &raquo;</a></p>
+            </div>
+        </div>
+
+        </div> <!-- /container -->
+{% endblock %}

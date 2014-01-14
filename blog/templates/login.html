@@ -1,0 +1,29 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+<div class="container">
+
+<form action="" method="post" name="login" class="form-signin">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    {{form.hidden_tag()}}
+    <p>
+        {{form.username(class='form-control', placeholder='Email address')}}
+    </p>
+    <p>
+        {{form.password(class='form-control', placeholder='Password')}}
+    </p>
+    <p>{{form.remember_me}} Remember Me</p>
+    <p><input type="submit" class="btn btn-block btn-primary" value="Sign In"></p>
+</form>
+<hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

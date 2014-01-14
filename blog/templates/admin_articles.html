@@ -1,0 +1,30 @@
+{% extends "base_admin.html" %}
+{% set active_page = "articles" %}
+{% block title %}Admin articles{% endblock %}
+{% block content %}
+        <div class="container">
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+        <h2>Admin Page</h2>
+        <p>This page provides you an overview of latest articles and comments added.</p>
+        <p>From here you can manage users signed to the blog too.</p>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr><th>Title</th><th>Description</th><th>Categories</th><th>Comments</th><th>Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+            <tr>
+                <td><a href="/edit_article/{{article.id}}">{{article.title}}</a></td>
+                <td>{{article.description|truncate(50)}}</td>
+                <td>{{article.categories|join(', ', attribute='name')}}</td>
+                <td>{{article.comments.all()|length}}</td>
+                <td>{{article.created_at.strftime('%d/%m/%Y')}}</td>
+                <td><a class="genericon genericon-close admin-action" href="/admin/delete/{{article.id}}"></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+{% endblock %}

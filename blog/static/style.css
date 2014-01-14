@@ -1,0 +1,661 @@
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+/*margin: 0;*/
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+font-family: "source sans pro";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	font-family: Bitter, Georgia, serif;
+	line-height: 1.3;
+}
+
+h1 {
+	font-size: 48px;
+	margin: 33px 0;
+}
+
+h2 {
+	font-size: 30px;
+	margin: 25px 0;
+}
+
+h3 {
+	font-size: 22px;
+	margin: 22px 0;
+}
+
+h4 {
+	font-size: 20px;
+	margin: 25px 0;
+}
+
+h5 {
+	font-size: 18px;
+	margin: 30px 0;
+}
+
+h6 {
+	font-size: 16px;
+	margin: 36px 0;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+small {
+    font-size: 16px;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+cite, em, i {
+    font-style: italic;
+}
+
+menu,
+ol,
+ul {
+	margin: 16px 0;
+	padding: 0 0 0 40px;
+}
+
+ul {
+	list-style-type: square;
+}
+
+blockquote {
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 300;
+	margin: 24px 40px;
+}
+
+blockquote blockquote {
+	margin-right: 0;
+}
+
+blockquote cite,
+blockquote small {
+	font-size: 14px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+blockquote em,
+blockquote i {
+	font-style: normal;
+	font-weight: 300;
+}
+
+blockquote strong,
+blockquote b {
+	font-weight: 400;
+}
+
+code, tt {
+
+    font-family: Inconsolata,monospace;
+    font-size: 0.85em;
+    white-space: pre;
+    background: none repeat scroll 0% 0% rgb(241, 240, 234);
+    border: 1px solid rgb(221, 219, 204);
+    border-radius: 2px;
+    padding: 1px 3px;
+
+}
+
+a {
+	color: rgb(91, 164, 229);
+	text-decoration: none;
+}
+
+a:visited {
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:active,
+a:hover {
+
+	outline: 0;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+@font-face {
+    font-family: "Bitter";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Bitter-Regular"), url("http://themes.googleusercontent.com/static/fonts/bitter/v4/s9gJB935qk_YG8d-lnTdvA.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"), url("http://themes.googleusercontent.com/static/fonts/sourcesanspro/v6/toadOcfmlt9b38dHJxOBGIPZSf8Ud0kNoe3bGnF7K24.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Genericons';
+    src: url('font/genericons-regular-webfont.eot');
+    src: url('font/genericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/genericons-regular-webfont.woff') format('woff'),
+         url('font/genericons-regular-webfont.ttf') format('truetype'),
+         url('font/genericons-regular-webfont.svg#genericonsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    
+}
+
+#header {
+	height: 200px;
+	width: 75%;
+	margin: 50px 12.5%;
+}
+
+#header h1 {
+    font-family: bitter;
+    font-size: 72px;
+    text-align: center;
+    text-shadow: 2px 1px 1px rgb(200,200,200);
+}
+
+#two_columns {
+    width: 90%;
+    margin: 0 5% 50px;
+}
+
+#left_column {
+    float: left;
+    width: 50%;
+    background-color: rgb(255,0,0);
+}
+
+#right_column {
+    margin-left: 50%;
+    background-color: rgb(0,255,0);
+}
+
+/*
+* Navigation Bar
+*/
+
+.navbar {
+    margin: 50px auto;
+}
+
+.navbar ul {
+    padding: 0;
+}
+
+.navbar li {
+    list-style: none;
+    float: left;
+    width: 25%;
+    height: 74px;
+    text-align:center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-head {
+    font-size: 32px;
+}
+
+.nav-head:before {
+    font-family: genericons;
+    content: '\f428';
+}
+
+.nav-head.twitter.twitter-emblem:before {
+    content: '\f202';
+}
+
+.nav-head.portfolio.portfolio-emblem:before {
+    content: '\f103';
+}
+
+.nav-head.blog.blog-emblem:before {
+    content: '\f100';
+}
+
+.nav-head.about.about-emblem:before {
+    content: '\f304';
+}
+
+.nav-title {
+    font-family: "source sans pro";
+    font-size: 18px;
+    font-weight: 300;
+    margin: 10px auto;
+    display: none;
+}
+	
+#content {
+	width: 60%;
+	margin: 0 20% 50px;
+	border: dotted 1px rgb(200,200,200);
+	overflow: hidden;
+}
+
+.content-footer {
+    text-align: right;
+    font-style: italic;
+    margin: 10px 0 30px;
+    padding: 0 40px;
+    font-size: 20px;
+}
+
+/*
+* Post Style
+*/
+article.post {
+    max-width: 400px;
+    box-shadow: -2px 0px 3px rgb(200,200,200), 2px 0px 3px rgb(200,200,200);
+    /*overflow: hidden;*/
+    margin: 40px auto;
+}
+
+.post-date {
+    position:absolute;
+    background: white;
+    padding: 3px;
+    border: 1px solid rgb(200, 200, 200);
+    font-size: 15px;
+    font-family: "courier new";
+    margin: 0;
+}
+
+.post-thumbnail {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.post-thumbnail img {
+    width: inherit;
+}
+
+.post-content {
+    margin: 10px 5px 5px;
+}
+
+.post-title {
+    font-family: bitter;
+    font-weight: 300;
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.post-description {
+    padding: 3px 0;
+    font-family: "source sans pro";
+    text-align: justify;
+}
+
+.post-actions {
+    overflow: hidden;
+    margin: 5px auto;
+    height: 44px;
+}
+
+.post-actions ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post-actions li {
+    float: left;
+    margin: 0 15%;
+    font-family: "source sans pro";
+    text-align: center;
+    opacity: 0.6;
+    display: none;
+}
+
+.post-actions li:hover {
+    opacity: 1;
+}
+
+.post-actions li img {
+    /*margin: 0 28%;*/
+}
+
+.post-actions p {
+    margin: 0;
+}
+
+.post-actions a {
+    text-decoration: none;
+    color: black;
+}
+
+/*
+* Single Article Style
+*/
+
+article.post-single {
+    margin: 40px 2%;
+}
+
+.post-single > .post-thumbnail {
+    margin: 0 auto 40px;
+    width: 400px;
+}
+
+.post-single > .post-date {
+    display: inline-block;
+    position: relative;
+}
+
+.post-single > .post-title {
+    padding: 15px;
+    font-size: 36px;
+}
+
+.post-single > .post-content {
+    line-height: 1.5;
+    font-size: 18px;
+    text-align: justify;
+}
+
+/*
+* Footer style
+*/
+
+.footer-line {
+    margin: 20px 0px 0;
+    clear: both;
+    background-color: rgb(125, 125, 125);
+    border-top: 1px dotted rgb(222, 222, 222);
+    text-align: right;
+    color: white;
+}
+
+p.elapsed {
+    margin: 0px;
+    text-align: left;
+    float: left;
+    font-size: 90%;
+    font-style: italic;
+    padding: 10px;
+}
+
+p.credits {
+    font-size: 80%;
+    font-family: droid-sans;
+    padding: 10px;
+}
+
+
+
+#footer {
+    /**/
+    width: 70%;
+    margin: 0 auto;
+    border: 1px dotted rgb(225,225,225);
+    padding: 30px 0 0;
+    margin-top: 100px;
+    clear: both;
+}
+
+/*
+* Widgets style
+*/
+
+.widgets {
+    margin: 0 10% 30px;
+    overflow: hidden;
+}
+
+.widget {
+    float: left;
+    margin-right: 100px;
+}
+
+.widget h2 {
+    padding: 5px;
+    font-size: 20px;
+}
+
+.widget.categories ul {
+    /*margin: 10px 0 10px 25px;*/
+    list-style: square;
+}
+
+.widget.categories li {
+    line-height: 1.5;
+}
+
+/*
+* Comments style
+*/
+
+#comments {
+    /*margin-bottom: 2em;*/
+}
+
+#comments-title {
+    font-size: 28px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    border-bottom: 1px dotted rgb(221,221,221);
+    text-align: center;
+}
+
+.comment-children li.comment-thread {
+    border-bottom: none;
+}
+
+li.comment-thread {
+    border-bottom: 1px dotted rgb(187,187,187);
+    padding: 15px 0 5px 10px;
+}
+
+.comment-author {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.comment-meta {
+    font-size: 12px;
+    color: rgb(153, 153, 153);
+}
+
+.comment-body {
+    padding: 1em 10px 0px 0px;
+}
+
+.comment-reply {
+    padding: 10px 0 5px;
+}
+
+.comment-reply-click {
+    color: rgb(28, 155, 220);
+    cursor: pointer;
+}
+
+/*
+* Reply form
+*/
+
+#respond {
+    background: url(images/brillant_dark.png);
+    margin-top: 5px;
+}
+
+#reply-title {
+    padding: 5px;
+    font-size: 20px;
+}
+
+#comment-form-textarea {
+    padding: 10px 10px 5px;
+    margin: 5px;
+    background: white;
+    border: 1px solid rgba(200,200,200,90);
+}
+
+#comment-form-textarea textarea {
+    margin: 0;
+    width: 100%;
+    border: none;
+    padding: 5px;
+    outline: none;
+    background: none;
+}
+
+#comment-form-identity {
+    margin: 0 20px;
+}
+
+#comment-form-identity-head {
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+#comment-form-identity-services li {
+    float: left;
+    border: none;
+    list-style: none;
+}
+
+a.login-twitter:before {
+    font-family: genericons;
+    content: '\f202';
+}
+
+a.login-facebook:before {
+    font-family: genericons;
+    content: '\f204';
+}
+
+.comment-form-field {
+    clear: none;
+    position: relative;
+    width: auto;    
+    margin-bottom: 5px;
+}
+
+.comment-form-field label {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    /*width: 100%;*/
+    color: rgba(0,0,0,0.6);
+    z-index: 99;
+}
+
+.comment-form-input input{
+    width: 100%;
+    height: 26px;
+    outline-color: rgba(0,0,0,0.3);
+    font-size: 13px;
+    border: 1px solid rgba(0,0,0,0.1);
+    z-index: 100;
+    padding-left: 5px;
+}
+
+.nopublish {
+    position: absolute;
+    float: none;
+    width: 100px;
+    padding: 5px;
+    right: -5px;
+    top: -40px;
+    font-size: 12px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    display: none;
+}
+
+p.comment-submit {
+    padding: 10px 0;
+    text-align: center;
+}
+
+#comment-submit {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 15px !important;
+    padding: 3px 10px;
+    font-family: droid-sans;
+    font-size: 14px;
+    background: white;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (max-width: 640px) {
+/* Styles */
+
+#header {
+    width: 90%;
+    margin: 30px 5%;
+}
+
+#header h1 {
+  font-size: 48px;
+}
+
+#content {
+    width: 90%;
+    margin: 0 5% 50px;
+}
+}

@@ -1,0 +1,38 @@
+{% extends "base_admin.html" %}
+{% set active_page = "files" %}
+{% block title %}Admin files{% endblock %}
+{% block content %}
+        <div class="container">
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+        <h2>Admin Files</h2>
+        <p>This page provides you a way to upload files.</p>
+        </div>
+        <h3>Files: </h3>
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr><th>Filename</th><th>Type</th><th>Articles</th><th>Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+            {% for file in files %}
+            <tr>
+                <td><a href="/edit_file/{{file.id}}">{{file.name}}</a></td>
+                <td>{{file.type}}</td>
+                <td>{{file.articles|join(', ', attribute='name')}}</td>
+                <td>{{file.uploaded_at.strftime('%d/%m/%Y')}}</td>
+                <td><a class="genericon genericon-close admin-action" href="/admin/delete_file/{{file.id}}"></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h3>Images: </h3>
+        <div class="row">
+
+            {% for file in files %}
+                {% if file.type == 'image/png' or file.type == 'image/jpg' %}
+                    <div class="col-xs-6 col-sm-4 col-md-3"><h5><strong>{{file.name}}</strong></h5><img class="image-inherit" src="{{file.get_url()}}"/></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        </div>
+{% endblock %}
