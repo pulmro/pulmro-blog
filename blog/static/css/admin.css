@@ -43,6 +43,10 @@
     content: '\f405';
 }
 
+.genericon-subscribe:before {
+    content: '\f463';
+}
+
 a.admin-action {
     font-size: 16px;
     text-decoration: none;

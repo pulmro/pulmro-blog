@@ -61,6 +61,12 @@ class EditArticleForm(Form):
     submit = SubmitField('Submit')
 
 
+class EditCategoryForm(Form):
+    name = TextField('Name', validators=[Required(), Length(max=80)])
+    description = TextAreaField('Description', validators=[Length(max=255)])
+    submit = SubmitField('Submit')
+
+
 class LoginForm(Form):
     username = TextField('Username', validators=[Required()])
     password = PasswordField('Password', validators=[Required()])

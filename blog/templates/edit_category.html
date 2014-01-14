@@ -1,0 +1,18 @@
+{% extends "base_admin.html" %}
+{% set active_page = "categories" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <form class="form-horizontal" method="POST">
+
+	    {{ form.csrf_token }}
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">{{ form.name(class='form-control input-title') }}</div>
+        </div>
+        <div class="form-group">{{ form.submit(class='btn btn-block btn-primary') }}</div>
+    </form>
+</div>
+{% endblock %}

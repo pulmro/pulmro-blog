@@ -115,10 +115,12 @@ def edit_article(article_id):
     return render_template('edit_article.html', categories=Category.get_all(), form=form, media_form=media_form)
 
 
-@app.route('/new_article', methods=['GET', 'POST'])
+@app.route('/admin/new_article', methods=['GET', 'POST'])
 @admin_login_required
 def new_article():
     form = forms.EditArticleForm()
+    media_form = get_media_form()
+    form.categories.choices = [(cat.id, cat.name) for cat in Category.query.order_by('name').all()]
     if form.validate_on_submit():
         data = form.data
         categories = [Category.query.get(i) for i in data['categories']]
@@ -126,8 +128,34 @@ def new_article():
         db.session.add(article)
         db.session.commit()
         return redirect(url_for('get_article', article_id=article.id))
-    return render_template('edit_article.html', categories=Category.get_all(), form=form)
+    return render_template('edit_article.html', categories=Category.get_all(), form=form, media_form=media_form)
 
+
+@app.route('/admin/edit_category/<int:category_id>', methods=['GET', 'POST'])
+@admin_login_required
+def edit_category(category_id):
+    form = forms.EditCategoryForm()
+    if form.validate_on_submit():
+        data = form.data
+        Category.query.filter_by(id=category_id).update({"name": data['name']})
+        db.session.commit()
+        return redirect(url_for('admin'))
+    category = Category.query.get(category_id)
+    form.name.data = category.name
+    return render_template('edit_category.html', form=form)
+
+
+@app.route('/admin/new_category', methods=['GET', 'POST'])
+@admin_login_required
+def new_category():
+    form = forms.EditCategoryForm()
+    if form.validate_on_submit():
+        data = form.data
+        category = Category(name=data['name'])
+        db.session.add(category)
+        db.session.commit()
+        return redirect(url_for('admin'))
+    return render_template('edit_category.html', form=form)
 
 
 @app.route('/admin')
@@ -136,8 +164,9 @@ def admin():
     recent_articles = Article.query.order_by('created_at desc').limit(5).all()
     recent_users = User.query.order_by('nickname').limit(5).all()
     recent_comments = Comment.query.order_by('date desc').limit(5).all()
+    recent_categories = Category.query.order_by('name').limit(5).all()
     return render_template('admin.html', recent_articles=recent_articles, recent_users=recent_users,
-                           recent_comments=recent_comments)
+                           recent_comments=recent_comments, recent_categories=recent_categories)
 
 
 @app.route('/admin/articles')
