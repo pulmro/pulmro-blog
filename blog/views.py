@@ -126,7 +126,7 @@ def new_article():
     if form.validate_on_submit():
         data = form.data
         categories = [Category.query.get(i) for i in data['categories']]
-        article = Article(data['title'], data['pagedown'], data['description'], None, categories)
+        article = Article(data['title'], data['pagedown'], data['description'], data['image'], categories)
         db.session.add(article)
         db.session.commit()
         return redirect(url_for('get_article', article_id=article.id))

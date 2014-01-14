@@ -25,9 +25,9 @@ class Article(db.Model):
     comments = db.relationship('Comment', backref=db.backref('article'), lazy='dynamic')
 
     def __init__(self, title, body, description=None, thumbnail_id=None, categories=[]):
-        self.title = unicode(title)
-        self.body = unicode(body, "utf-8")
-        self.description = unicode(description)
+        self.title = title
+        self.body = body
+        self.description = description
         self.thumbnail_id = thumbnail_id
         self.created_at = datetime.utcnow()
         self.categories = categories
