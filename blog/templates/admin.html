@@ -38,6 +38,20 @@
                 </ul>
                 <p><a class="btn btn-default" href='/admin/users'>View Users &raquo;</a></p>
             </div>
+            <div class="col-xs-6 col-sm-6 col-md-4">
+                <h2 class="genericon">Categories</h2>
+                <h4><a class="admin-action" href="/admin/new_category"><span class="genericon genericon-subscribe"></span></a></h4>
+                <p>Recent categories in your blog</p>
+                <ul class="admin-list">
+                    {% for category in recent_categories %}
+                    <li class="row">
+                        <div class="col-xs-8">{{category.name}}</div>
+                        <div class="col-xs-4"><a href="/admin/edit_category/{{category.id}}">edit &raquo;</a></div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <p><a class="btn btn-default" href='/admin/categories'>View Categories &raquo;</a></p>
+            </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <h2>Comments</h2>
                 <p>Most recent comments</p>
@@ -54,20 +68,6 @@
                     {% endfor %}
                 </ul>
                 <p><a class="btn btn-default" href='/admin/comments'>View Comments &raquo;</a></p>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-4">
-                <h2 class="genericon">Categories</h2>
-                <h4><a class="admin-action" href="/admin/new_category"><span class="genericon genericon-subscribe"></span></a></h4>
-                <p>Recent categories in your blog</p>
-                <ul class="admin-list">
-                    {% for category in recent_categories %}
-                    <li class="row">
-                        <div class="col-xs-8">{{category.name}}</div>
-                        <div class="col-xs-4"><a href="/admin/edit_category/{{category.id}}">edit &raquo;</a></div>
-                    </li>
-                    {% endfor %}
-                </ul>
-                <p><a class="btn btn-default" href='/admin/categories'>View Categories &raquo;</a></p>
             </div>
         </div>
 
