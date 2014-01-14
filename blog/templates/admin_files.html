@@ -8,6 +8,17 @@
         <h2>Admin Files</h2>
         <p>This page provides you a way to upload files.</p>
         </div>
+        <div class="row">
+            <h3>Upload a new file</h3>
+            <form class="form-horizontal col-sm-6" method="POST" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                <div class="form-group ">
+                    <label for="file" class="control-label">Upload File</label>
+                    {{ form.file() }}
+                </div>
+                <div class="form-group">{{ form.submit(class='btn btn-block btn-primary') }}</div>
+            </form>
+        </div>
         <h3>Files: </h3>
         <table class="table table-striped table-bordered">
             <thead>
@@ -29,7 +40,7 @@
         <div class="row">
 
             {% for file in files %}
-                {% if file.type == 'image/png' or file.type == 'image/jpg' %}
+                {% if file.type == 'image/png' or file.type == 'image/jpeg' %}
                     <div class="col-xs-6 col-sm-4 col-md-3"><h5><strong>{{file.name}}</strong></h5><img class="image-inherit" src="{{file.get_url()}}"/></div>
                 {% endif %}
             {% endfor %}

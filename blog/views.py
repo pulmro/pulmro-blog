@@ -1,4 +1,5 @@
 from flask import render_template, g, url_for, redirect, request, flash, Markup, send_from_directory
+from werkzeug import secure_filename
 from flask_login import login_user, logout_user, login_required, current_user
 from blog import app, db, loginmanager, forms
 from models import User, Comment, Article, Category, UploadedFiles
@@ -6,6 +7,7 @@ from decorators import admin_login_required
 from forms import LoginForm
 from markdown import markdown
 import time
+import os
 from datetime import datetime
 
 
@@ -176,11 +178,21 @@ def admin_articles():
     return render_template('admin_articles.html', articles=articles)
 
 
-@app.route('/admin/files')
+@app.route('/admin/files', methods=['GET', 'POST'])
 @admin_login_required
 def admin_files():
+    form = forms.UploadFileForm()
+    if form.validate_on_submit():
+        upload_file = form.file.data
+        filename = secure_filename(upload_file.filename)
+        upload_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        new_file = UploadedFiles(filename)
+        db.session.add(new_file)
+        db.session.commit()
+    else:
+        filename = None
     files = UploadedFiles.query.order_by('uploaded_at desc').all()
-    return render_template('admin_files.html', files=files)
+    return render_template('admin_files.html', files=files, form=form, filename=filename)
 
 
 @app.route('/uploads/<filename>')

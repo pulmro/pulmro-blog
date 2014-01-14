@@ -1,6 +1,7 @@
 from flask_wtf import Form
 from wtforms import TextField, TextAreaField, HiddenField, SubmitField, PasswordField, BooleanField,\
-    SelectMultipleField, RadioField, Label, widgets, SelectField
+    SelectMultipleField, RadioField, Label, widgets
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 from pagedown import PageDownField
 from wtforms.validators import Required, Length, Regexp
 
@@ -75,3 +76,8 @@ class LoginForm(Form):
 
 class MediaForm(Form):
     files = RadioField('Files')
+
+
+class UploadFileForm(Form):
+    file = FileField('Upload file', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'pdf'])])
+    submit = SubmitField('Upload')

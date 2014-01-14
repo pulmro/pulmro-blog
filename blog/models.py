@@ -1,4 +1,5 @@
 from datetime import datetime
+from mimetypes import guess_type
 from flask import url_for
 from blog import db, bcrypt
 
@@ -112,6 +113,11 @@ class UploadedFiles(db.Model):
     name = db.Column(db.String(255))
     type = db.Column(db.String(125))
     uploaded_at = db.Column(db.DateTime)
+
+    def __init__(self, name):
+        self.name = name
+        self.type = guess_type(name)[0]
+        self.uploaded_at = datetime.utcnow()
 
     def get_url(self):
         return url_for('uploaded_file', filename=self.name)
