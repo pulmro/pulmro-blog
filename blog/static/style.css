@@ -400,6 +400,10 @@ article.post-single {
     width: 400px;
 }
 
+.post-single > .post-thumbnail img {
+    box-shadow: -2px 0px 5px rgb(200,200,200), 2px 0px 5px rgb(200,200,200);
+}
+
 .post-single > .post-date {
     display: inline-block;
     position: relative;
