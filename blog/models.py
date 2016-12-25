@@ -1,7 +1,8 @@
 from datetime import datetime
 from mimetypes import guess_type
-from flask import url_for
+from flask import url_for, Markup
 from blog import db, bcrypt
+from markdown import markdown
 
 
 ROLE_USER = 0
@@ -43,6 +44,9 @@ class Article(db.Model):
             return self.thumbnail.get_url()
         return None
 
+    def get_body_html(self):
+	return Markup(markdown(self.body))
+
     def get_next(self):
         return Article.query.filter(Article.created_at > self.created_at).order_by('created_at').first()
 
@@ -54,8 +58,17 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
 
+    def __init__(self, name, articles=[]):
+	self.name = name
+	self.articles = articles
+
     def __repr__(self):
         return '<Category %r>' % self.name
+
+    def get_thumbnail_url(self):
+	if self.articles.first():
+           return self.articles.first().get_thumbnail_url()
+	return None
 
     @staticmethod
     def get_all():

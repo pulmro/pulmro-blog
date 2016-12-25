@@ -14,14 +14,14 @@
 </head>
 <body>
     <div id="header">
-    <div><h1>{ brackets }</h1></div>
+    <div><h1>{ebigiarini}</h1>
     <div class="navbar">
-        <ul><li><div class="nav-head about"></div><div class="nav-title"><a href="#">About</a></div></li>
-            <li><div class="nav-head blog"></div><div class="nav-title"><a href="/">blog</a></div></li>
-            <li><div class="nav-head portfolio"></div><div class="nav-title"><a href="#">portfolio</a></div></li>
-            <li><div class="nav-head twitter"></div><div class="nav-title"><a href="https://www.twitter.com/pulmro">twitter</a></div></li>
+        <ul><li><div class="nav-head about">&#62212;</div><div class="nav-title"><a href="/">Home</a></div></li>
+            <li><div class="nav-head blog">&#61696;</div><div class="nav-title"><a href="#">blog</a></div></li>
+            <li><div class="nav-head portfolio">&#xf103;</div><div class="nav-title"><a href="#">Corsi</a></div></li>
+            <li><div class="nav-head twitter">&#61954;</div><div class="nav-title"><a href="https://www.twitter.com/pulmro">twitter</a></div></li>
         </ul>
-    </div>
+    </div></div>
     </div>
 
     {% block content %}{% endblock %}
@@ -29,15 +29,11 @@
     <div id="footer">
     <div class="widgets">
 
-        <div class="widget twitter"><a class="twitter-timeline" width="300" href="https://twitter.com/twitter"  data-widget-id="413380688067297280">Tweets di @twitter</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </div>
-
         <div class="widget categories">
-            <h2>Categories</h2>
+            <h2>Corsi</h2>
             <ul>
                 {% for category in categories %}
-                <li>{{category.name}}</li>
+                <li><a href=/course/{{category.id}}>{{category.name}}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -52,7 +48,7 @@
         <div class="widget meta">
             <h2>User</h2>
 
-                {% if g.user.is_authenticated() %}
+                {% if g.user.is_authenticated %}
             <p>Hi, <em>{{ g.user.nickname }}</em></p>
             <p>
                 {% if g.user.is_admin() %}

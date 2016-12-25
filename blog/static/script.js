@@ -8,14 +8,16 @@ $(document).ready( function () {
     $(".navbar li").hover( function () {
         var navhead = $(this).children(".nav-head");
         navhead.css('text-shadow', '0px 1px 1px rgb(100,100,100)');
-        navhead.addClass(get_emblem_class(navhead));
-        $(this).children(".nav-title").stop().fadeIn(200);
+	$(this).css('text-shadow', '0px 1px 1px rgb(100,100,100)');
+        //navhead.addClass(get_emblem_class(navhead));
+        //$(this).children(".nav-title").stop().fadeIn(200);
     },
     function () {
         var navhead = $(this).children(".nav-head");
         navhead.css('text-shadow', 'none');
-        navhead.removeClass(get_emblem_class(navhead));
-        $(this).children(".nav-title").stop().fadeOut(200);
+	$(this).css('text-shadow', 'none');
+        //navhead.removeClass(get_emblem_class(navhead));
+        //$(this).children(".nav-title").stop().fadeOut(200);
     });
     
     

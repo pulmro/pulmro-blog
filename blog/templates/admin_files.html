@@ -31,7 +31,9 @@
                 <td>{{file.type}}</td>
                 <td>{{file.articles|join(', ', attribute='name')}}</td>
                 <td>{{file.uploaded_at.strftime('%d/%m/%Y')}}</td>
-                <td><a class="genericon genericon-close admin-action" href="/admin/delete_file/{{file.id}}"></a></td>
+                <td><a class="genericon genericon-close admin-action" href="/admin/delete_file/{{file.id}}"></a>
+		    <a class="genericon genericon-geturl admin-action" href="{{file.get_url()}}"></a>
+		</td>
             </tr>
             {% endfor %}
             </tbody>

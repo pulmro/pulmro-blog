@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import TextField, TextAreaField, HiddenField, SubmitField, PasswordField, BooleanField,\
     SelectMultipleField, RadioField, Label, widgets
 from flask_wtf.file import FileField, FileAllowed, FileRequired
@@ -34,10 +34,9 @@ class ImageLabel(Label):
 
 class ImageField(HiddenField):
     def __init__(self, label=None, validators=None, filters=tuple(),
-                 description='', id=None, default=None, widget=None,
+                 description='', id=None, default=None, widget=None, render_kw=None,
                  _form=None, _name=None, _prefix='', _translations=None):
-        super(ImageField, self).__init__(label, validators, filters, description, id, default, widget, _form, _name,
-                                         _prefix, _translations)
+        super(ImageField, self).__init__(label, validators, filters, description, id, default, widget, render_kw, _form, _name, _prefix, _translations)
         self.label = ImageLabel(self.id, label if label is not None else self.gettext(_name.replace('_', ' ').title()))
 
     def set_data(self, data, label):
@@ -45,7 +44,7 @@ class ImageField(HiddenField):
         self.label.text = label
 
 
-class CommentRespondForm(Form):
+class CommentRespondForm(FlaskForm):
     body = TextAreaField('body', validators=[Required()])
     email = TextField('Email', validators=[Length(min=6, max=35)])
     author = TextField('Name', validators=[Length(min=4, max=25)])
@@ -53,7 +52,7 @@ class CommentRespondForm(Form):
     comment_parent_id = HiddenField('Parent id', default=0)
 
 
-class EditArticleForm(Form):
+class EditArticleForm(FlaskForm):
     title = TextField('Title', validators=[Required(), Length(max=255)])
     pagedown = PageDownField('Enter your markdown')
     description = TextAreaField('Description', validators=[Length(max=350)])
@@ -62,22 +61,22 @@ class EditArticleForm(Form):
     submit = SubmitField('Submit')
 
 
-class EditCategoryForm(Form):
+class EditCategoryForm(FlaskForm):
     name = TextField('Name', validators=[Required(), Length(max=80)])
     description = TextAreaField('Description', validators=[Length(max=255)])
     submit = SubmitField('Submit')
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     username = TextField('Username', validators=[Required()])
     password = PasswordField('Password', validators=[Required()])
     remember_me = BooleanField('remember_me', default=False)
 
 
-class MediaForm(Form):
+class MediaForm(FlaskForm):
     files = RadioField('Files')
 
 
-class UploadFileForm(Form):
+class UploadFileForm(FlaskForm):
     file = FileField('Upload file', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'pdf'])])
     submit = SubmitField('Upload')

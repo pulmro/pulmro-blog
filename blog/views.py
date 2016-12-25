@@ -18,7 +18,7 @@ def load_user(user_id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if g.user is not None and g.user.is_authenticated():
+    if g.user is not None and g.user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
@@ -49,8 +49,9 @@ def before_request():
 @app.route('/')
 @app.route('/index')
 def index():
-    recent_articles = Article.query.order_by('created_at desc').limit(3).all()
-    return render_template('index.html', categories=Category.get_all(), recent_articles=recent_articles)
+    
+    #recent_articles = Article.query.order_by('created_at desc').limit(3).all()
+    return render_template('index.html', categories=Category.get_all())
 
 
 @app.route('/article/<int:article_id>', methods=['GET'])
@@ -67,6 +68,13 @@ def get_article(article_id):
     form = forms.CommentRespondForm()
     return render_template('article.html', categories=Category.get_all(), article=article, link_previous=link_previous,
                            link_next=link_next, form=form, comments=comments)
+
+
+@app.route('/course/<int:course_id>', methods=['GET'])
+def get_course(course_id):
+    category = Category.query.get(course_id)
+    articles = category.articles
+    return render_template('category.html', category=category, articles=articles, categories=Category.get_all())
 
 
 @app.route('/comment-post', methods=['POST'])
@@ -113,7 +121,8 @@ def edit_article(article_id):
     form.pagedown.data = article.body
     form.description.data = article.description
     form.categories.data = [cat.id for cat in article.categories]
-    form.image.set_data(article.thumbnail_id, article.thumbnail.get_url())
+    if article.thumbnail:
+	form.image.set_data(article.thumbnail_id, article.thumbnail.get_url())
     return render_template('edit_article.html', categories=Category.get_all(), form=form, media_form=media_form)
 
 

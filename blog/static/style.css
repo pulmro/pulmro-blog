@@ -150,7 +150,7 @@ code, tt {
 }
 
 a {
-	color: rgb(91, 164, 229);
+	color: rgb(63, 116, 163);
 	text-decoration: none;
 }
 
@@ -202,16 +202,22 @@ body {
 }
 
 #header {
-	height: 200px;
-	width: 75%;
-	margin: 50px 12.5%;
+	/*height: 150px;
+	width: 75%;*/
+	width: 90%;
+	margin: 0px 2.5%;
+        padding: 33px 0;
+	display: inline-block;
 }
 
 #header h1 {
     font-family: bitter;
-    font-size: 72px;
+    font-size: 48px;
     text-align: center;
     text-shadow: 2px 1px 1px rgb(200,200,200);
+    float: left;
+    margin: 0;
+    width: 40%;
 }
 
 #two_columns {
@@ -235,19 +241,23 @@ body {
 */
 
 .navbar {
-    margin: 50px auto;
+    /*margin: 50px auto;*/
+    float: left;
+    width: 60%;
 }
 
 .navbar ul {
     padding: 0;
+    margin: 0 10%;
 }
 
 .navbar li {
     list-style: none;
     float: left;
-    width: 25%;
+    width: 23%;
     height: 74px;
     text-align:center;
+    margin: 0 1%;
 }
 
 .navbar a {
@@ -257,26 +267,26 @@ body {
 
 .nav-head {
     font-size: 32px;
+    margin: 0 30%;
 }
 
-.nav-head:before {
+.nav-head {
     font-family: genericons;
-    content: '\f428';
 }
 
-.nav-head.twitter.twitter-emblem:before {
+.nav-head.twitter {
     content: '\f202';
 }
 
-.nav-head.portfolio.portfolio-emblem:before {
+.nav-head.portfolio {
     content: '\f103';
 }
 
-.nav-head.blog.blog-emblem:before {
+.nav-head.blog {
     content: '\f100';
 }
 
-.nav-head.about.about-emblem:before {
+.nav-head.about {
     content: '\f304';
 }
 
@@ -285,7 +295,21 @@ body {
     font-size: 18px;
     font-weight: 300;
     margin: 10px auto;
-    display: none;
+    /*display: none;*/
+}
+
+
+/*
+* Content
+*/
+
+#cover-image {
+	text-align: center;
+}
+
+#cover-image img {
+	max-width: 100%;
+	height: auto;
 }
 	
 #content {
@@ -293,6 +317,11 @@ body {
 	margin: 0 20% 50px;
 	border: dotted 1px rgb(200,200,200);
 	overflow: hidden;
+}
+
+#content h2{
+	margin: 2%;
+	/*text-align: center;*/
 }
 
 .content-footer {
@@ -307,10 +336,16 @@ body {
 * Post Style
 */
 article.post {
-    max-width: 400px;
+    width: 200px;
     box-shadow: -2px 0px 3px rgb(200,200,200), 2px 0px 3px rgb(200,200,200);
     /*overflow: hidden;*/
-    margin: 40px auto;
+    margin: 20px 20px;
+    float: left;
+}
+
+.post a {
+    text-decoration:none;
+    color: none;
 }
 
 .post-date {
@@ -333,13 +368,19 @@ article.post {
 }
 
 .post-content {
-    margin: 10px 5px 5px;
+    padding: 10px 5px 5px;
+}
+
+.course-content {
+    padding: 10px 5px 5px;
+    background-color:#424f59;
+    color: white;
 }
 
 .post-title {
     font-family: bitter;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 18px;
     padding-left: 10px;
 }
 
@@ -411,12 +452,12 @@ article.post-single {
 
 .post-single > .post-title {
     padding: 15px;
-    font-size: 36px;
+    font-size: 24px;
 }
 
 .post-single > .post-content {
     line-height: 1.5;
-    font-size: 18px;
+    font-size: 14px;
     text-align: justify;
 }
 
@@ -655,7 +696,14 @@ p.comment-submit {
 }
 
 #header h1 {
-  font-size: 48px;
+  font-size: 36px;
+  float: none;
+  width: 100%;
+}
+
+.navbar {
+  width: auto;
+  float: none;
 }
 
 #content {
@@ -663,3 +711,28 @@ p.comment-submit {
     margin: 0 5% 50px;
 }
 }
+/*
+@media screen and (max-width: 360px) {
+
+
+#header {
+    width: 90%;
+    margin: 30px 5%;
+}
+
+#header h1 {
+  font-size: 36px;
+  float: none;
+  width: 100%;
+}
+
+.navbar {
+  width: auto;
+  float: none;
+}
+
+#content {
+    width: 90%;
+    margin: 0 5% 50px;
+}
+}*/

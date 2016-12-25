@@ -1,21 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="content">
-    {% for article in recent_articles %}
-    <article class="post">
-        <div class="post-header"><p class="post-date">{{article.created_at.strftime('%d %m %Y')}}</p></div>
-        <div class="post-thumbnail"><img src='{{article.get_thumbnail_url()}}' alt='{{article.title}}' /></div>
-        <div class="post-content">
-            <div class="post-title">{{article.title}}</div>
-            <div class="post-description">{{article.description}}</div>
-        </div>
-        <div class="post-actions">
-            <ul><li><a href="#"><img src="../static/images/share.png"><p>Share</p></a></li>
-            <li><a href="article/{{article.id}}"><img src="../static/images/go-next.png"><p>Read more</p></a></li></ul>
-        </div>
-
+    <div id="cover-image"><img src="/uploads/find_x.png"></div>
+    <h2> Corsi: </h2>
+    {% for course in categories %}
+	<article class="post"><a href="course/{{course.id}}">
+        <div class="post-thumbnail"><img src='{{course.get_thumbnail_url()}}' alt='{{course.name}}' /></div>
+        <div class="course-content">
+            <div class="post-title">{{course.name}}</div>
+        </div></a>
     </article>
     {% endfor %}
-    <div class="content-footer"><a href="#">More posts &#187</a></div>
 </div>
 {% endblock %}

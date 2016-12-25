@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} {{category.name}} {% endblock %}
+{% block content %}
+<div id="content">
+    <h2> {{category.name}}</h2>
+    {% for article in articles %}
+    <article class="post-single">
+            <p class="post-date">{{article.created_at.strftime('%d %m %Y')}}</p>
+            <div class="post-title">{{article.title}}
+                    {% if g.user.is_authenticated and g.user.is_admin() %}<small><code><a href="/edit_article/{{article.id}}">edit article</a></code></small>{% endif %}
+            </div>
+	    <div class="post-thumbnail"><img src="{{article.get_thumbnail_url()}}" alt="{{article.title}}" /></div>
+            <div class="post-content">
+            <div class="post-body">{{article.get_body_html()}}</div>
+        </div>
+    </article>
+    {% endfor %}
+    <div class="content-footer"><a href=""> Back to blog </a></div>
+</div>
+{% endblock %}

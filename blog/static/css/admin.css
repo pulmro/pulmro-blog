@@ -43,6 +43,10 @@
     content: '\f405';
 }
 
+.genericon-geturl:before {
+    content: '\f400';
+}
+
 .genericon-subscribe:before {
     content: '\f463';
 }
