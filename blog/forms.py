@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm
+from flask_wtf import Form as FlaskForm
 from wtforms import TextField, TextAreaField, HiddenField, SubmitField, PasswordField, BooleanField,\
     SelectMultipleField, RadioField, Label, widgets
 from flask_wtf.file import FileField, FileAllowed, FileRequired
